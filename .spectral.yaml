@@ -1,0 +1,144 @@
+formats:
+  - oas3.0
+  - oas2
+  - oas3
+extends:
+  - - 'spectral:oas'
+    - all
+functions:
+  - ensureNoCircularReferences
+rules:
+  info-matches-stoplight:
+    description: This is an example rule
+    message: Info must contain Stoplight
+    given: $.info
+    recommended: true
+    type: style
+    then:
+      field: title
+      function: pattern
+      functionOptions:
+        match: Stoplight
+    severity: 'off'
+  operation-description: true
+  operation-parameters: true
+  operation-success-response: true
+  path-params: true
+  operation-operationId: true
+  operation-operationId-valid-in-url: true
+  path-declarations-must-exist: true
+  path-keys-no-trailing-slash: true
+  openapi-tags: info
+  operation-tags: info
+  tag-description: false
+  oas3-operation-security-defined: true
+  oas3-server-trailing-slash: true
+  oas3-schema: true
+  oas3-parameter-description: true
+  
+  post-must-have-content:
+    description: POST запрос обязательно должен иметь body.
+    message: 'POST запрос должен иметь иметь свойство {{property}}.'
+    given: '$.paths.*.post.requestBody'
+    severity: warn
+    then:
+      - field: content
+        function: truthy
+  
+  ensure-endpoint-get-summary:
+    description: 'Эндпоинты должны иметь описание (поле summary)'
+    given: $.paths.*.get
+    severity: error
+    recommended: true
+    message: "[GET] Эндпоинты должны иметь описание (поле summary). {{error}}"
+    then:
+      field: summary
+      function: truthy
+  
+  ensure-endpoint-post-summary:
+    description: 'Эндпоинты должны иметь описание (поле summary)'
+    given: $.paths.*.post
+    severity: error
+    recommended: true
+    message: "[POST] Эндпоинты должны иметь описание (поле summary). {{error}}"
+    then:
+      field: summary
+      function: truthy
+  
+  ensure-endpoint-put-summary:
+    description: 'Эндпоинты должны иметь описание (поле summary)'
+    given: $.paths.*.put
+    severity: error
+    recommended: true
+    message: "[PUT] Эндпоинты должны иметь описание (поле summary). {{error}}"
+    then:
+      field: summary
+      function: truthy
+  
+  ensure-endpoint-patch-summary:
+    description: 'Эндпоинты должны иметь описание (поле summary)'
+    given: $.paths.*.patch
+    severity: error
+    recommended: true
+    message: "[PATCH] Эндпоинты должны иметь описание (поле summary). {{error}}"
+    then:
+      field: summary
+      function: truthy
+  
+  ensure-endpoint-delete-summary:
+    description: 'Эндпоинты должны иметь описание (поле summary)'
+    given: $.paths.*.delete
+    severity: error
+    recommended: true
+    message: "[DELETE] Эндпоинты должны иметь описание (поле summary). {{error}}"
+    then:
+      field: summary
+      function: truthy
+
+  ensure-param-description:
+    description: Параметры запроса должны иметь описание (description).
+    given: $..*.parameters[*]
+    severity: error
+    recommended: true
+    message: "Параметры запроса должны иметь описание (description). {{error}}"
+    then:
+      field: description
+      function: truthy
+
+  operationId-case:
+    description: "Имя параметра должно быть записано в формате camelCase"
+    message: "Значение параметра operationId должно быть записано в формате camelCase. {{error}}"
+    given: $..*.operationId
+    type: style
+    severity: error
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+
+  request-must-have-example:
+    description: Должен быть хотя бы один пример запроса.
+    given: '$.paths.*.*.requestBody.content.*'
+    severity: off
+    then:
+      field: examples
+      function: truthy
+
+  request-must-have-at-least-one-example:
+    description: Должен быть хотя бы один пример запроса.
+    given: '$.paths.*.*.requestBody.content.*'
+    severity: warn
+    then:
+      field: examples
+      function: length
+      functionOptions:
+        min: 1
+
+  ensure-no-circular-references:
+    description: Нельзя использовать в спецификациях циклические ссылки
+    given: $
+    severity: error
+    recommended: true
+    message: "{{error}}"
+    then:
+      function: ensureNoCircularReferences

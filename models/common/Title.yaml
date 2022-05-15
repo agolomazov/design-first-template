@@ -1,0 +1,6 @@
+title: Title
+type: string
+description: Модель заголовка сущности
+x-faker:
+  lorem.words:
+    - 5

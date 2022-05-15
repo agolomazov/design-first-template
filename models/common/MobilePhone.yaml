@@ -1,0 +1,6 @@
+title: MobilePhone
+type: string
+description: Телефон
+format: phone
+x-faker:
+  phone.phoneNumber: +7-(9##)-###-##-##

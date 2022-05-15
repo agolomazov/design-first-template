@@ -1,0 +1,5 @@
+title: Count
+type: integer
+description: Количество
+minimum: 0
+maximum: 100000

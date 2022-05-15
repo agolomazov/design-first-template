@@ -1,0 +1,7 @@
+type: string
+title: Gender
+description: Enum с полом пользователя
+enum:
+  - man
+  - woman
+  - none

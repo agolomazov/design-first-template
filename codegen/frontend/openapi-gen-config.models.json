@@ -1,0 +1,10 @@
+{
+  "apiPackage": "api",
+  "modelPackage": "models",
+  "withSeparateModelsAndApi": true,
+  "useSingleRequestParameter": true,
+  "allowUnicodeIdentifiers": false,
+  "nullSafeAdditionalProps": true,
+  "enumPropertyNaming": "PascalCase",
+  "modelPropertyNaming": "camelCase"
+}

@@ -1,0 +1,30 @@
+title: Pagination
+type: object
+description: Модель для пагинации в запросах на получение списка сущностей
+properties:
+  current:
+    type: integer
+    format: int32
+    description: Текущая страница
+    x-faker:
+      datatype.number:
+        min: 0
+        max: 50
+  total:
+    type: integer
+    description: Всего страниц
+    format: int32
+    x-faker:
+      datatype.number:
+        min: 50
+        max: 70
+  perPage:
+    type: integer
+    description: Количество элементов на страницу
+    x-faker:
+      datatype.number:
+        min: 25
+        max: 100
+required:
+  - current
+  - total

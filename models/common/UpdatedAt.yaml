@@ -1,0 +1,8 @@
+type: string
+title: UpdatedAt
+description: Дата обновления
+format: date-time
+x-faker:
+  date.between:
+    - 2021
+    - 2022

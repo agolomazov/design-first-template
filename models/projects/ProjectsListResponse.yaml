@@ -1,0 +1,14 @@
+title: ProjectsListResponse
+type: object
+description: Модель ответа со списком проектов
+properties:
+  patination:
+    $ref: ../common/Pagination.yaml
+  data:
+    type: array
+    description: Список проектов
+    items:
+      $ref: ./ProjectModel.yaml
+required:
+  - patination
+  - data

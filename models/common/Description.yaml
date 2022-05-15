@@ -1,0 +1,6 @@
+title: Description
+type: string
+description: Модель описания сущности
+x-faker:
+  lorem.words:
+    - 20

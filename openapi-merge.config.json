@@ -1,0 +1,8 @@
+{
+  "inputs": [
+    {
+      "inputFile": "./reference/example.yaml"
+    }
+  ],
+  "output": "./tmp/merged-spec.yaml"
+}

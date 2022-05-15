@@ -1,0 +1,5 @@
+type: string
+title: CommonId
+format: uuid
+description: ID записи в хранилище БД
+readOnly: true

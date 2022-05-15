@@ -1,0 +1,37 @@
+{
+  "name": "design-api",
+  "version": "1.0.0",
+  "description": "Репозиторий для проектирования API",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "lint": "spectral lint ./reference/*.yaml --ruleset .spectral.yaml",
+    "mock": "npm run sw && prism mock ./tmp/spec.yaml -p 3010 -h localhost",
+    "merge-specs": "openapi-merge-cli --config openapi-merge.config.json",
+    "sw": "npm run merge-specs && swagger-cli bundle -r -t yaml ./tmp/merged-spec.yaml -o ./tmp/spec.yaml",
+    "postman-gen": "openapi2postmanv2 -s ./tmp/spec.yaml -o ./postman/collection.json --options-config ./cli-options-config.json",
+    "postman": "npm run merge-specs && npm run sw && npm run postman-gen",
+    "codegen:frontend": "npm run merge-specs && npm run sw && node codegen/frontend/generate.js"
+  },
+  "keywords": [],
+  "author": "Anton Golomazov",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agolomazov/design-first-template"
+  },
+  "devDependencies": {
+    "@apidevtools/swagger-cli": "4.0.4",
+    "@openapitools/openapi-generator-cli": "2.4.26",
+    "@stoplight/prism-cli": "4.8.0",
+    "@stoplight/spectral-cli": "6.3.0",
+    "create-ts-index": "1.14.0",
+    "husky": "4.2.5",
+    "mustache": "4.2.0",
+    "openapi-merge-cli": "1.3.1",
+    "openapi-to-postmanv2": "3.1.0"
+  },
+  "dependencies": {
+    "@apidevtools/json-schema-ref-parser": "^9.0.9"
+  }
+}

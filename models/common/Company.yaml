@@ -1,0 +1,5 @@
+title: Company
+description: Модель компании
+type: string
+x-faker:
+  company.companyName

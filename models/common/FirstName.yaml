@@ -1,0 +1,6 @@
+title: FirstName
+type: string
+description: Модель имени пользователя
+x-faker:
+  name.firstName:
+    - "male"

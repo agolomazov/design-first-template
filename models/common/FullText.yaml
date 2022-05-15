@@ -1,0 +1,6 @@
+title: FullText
+type: string
+description: Полный тект для модели
+x-faker:
+  lorem.sentences:
+    - 20

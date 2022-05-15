@@ -1,0 +1,6 @@
+title: Patronomyc
+type: string
+description: Модель отчества пользователя
+x-faker:
+  name.middleName:
+    - "male"

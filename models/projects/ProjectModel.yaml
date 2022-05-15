@@ -1,0 +1,16 @@
+title: Project
+type: object
+description: Модель проекта
+properties:
+  id:
+    $ref: ../common/CommonId.yaml
+  title:
+    $ref: ../common/Title.yaml
+  description:
+    $ref: ../common/Description.yaml
+  image:
+    $ref: ../common/Image.yaml
+required:
+  - id
+  - title
+  - description

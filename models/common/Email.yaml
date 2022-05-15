@@ -1,0 +1,9 @@
+title: Email
+type: string
+description: Email
+format: email
+x-faker:
+  internet.email:
+    - null
+    - null
+    - 'exon.ru'

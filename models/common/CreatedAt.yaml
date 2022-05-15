@@ -1,0 +1,8 @@
+type: string
+title: CreatedAt
+description: Дата создания
+format: date-time
+x-faker:
+  date.between:
+    - 2020
+    - 2021
