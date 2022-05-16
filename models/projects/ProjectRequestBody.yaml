@@ -1,0 +1,13 @@
+title: ProjectRequestBody
+type: object
+description: Модель для создания проекта
+properties:
+  title:
+    $ref: ../common/Title.yaml
+  description:
+    $ref: ../common/Description.yaml
+  image:
+    $ref: ../common/Image.yaml
+required:
+  - title
+  - description

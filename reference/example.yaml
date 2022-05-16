@@ -46,7 +46,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: ../models/projects/ProjectResponse.yaml
+                $ref: ../models/projects/ProjectModel.yaml
         '400':
           description: Bad Request
         '401':
@@ -54,14 +54,14 @@ paths:
         '403':
           description: Forbidden
       description: Создание сущности Проект
+      tags:
+        - Проекты
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ../models/projects/ProjectModel.yaml
-        description: Модель проекта
-      tags:
-        - Проекты
+              $ref: ../models/projects/ProjectRequestBody.yaml
+        description: ''
 components:
   schemas: {}
   securitySchemes:
