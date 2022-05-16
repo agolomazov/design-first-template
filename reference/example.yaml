@@ -37,6 +37,7 @@ paths:
           description: Forbidden
       operationId: getProjects
       description: Получить список доступных проектов
+      security: []
     post:
       summary: Создание проекта
       operationId: createProject
@@ -62,13 +63,88 @@ paths:
             schema:
               $ref: ../models/projects/ProjectRequestBody.yaml
         description: ''
+  '/blog/posts/{id}':
+    parameters:
+      - $ref: '#/components/parameters/IDModel'
+    get:
+      summary: Получение поста по его ID
+      tags:
+        - Блог
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/blog/BlogPostModel.yaml
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      operationId: getPostById
+      description: Получение поста по ID
+      security: []
+    put:
+      summary: Обновление поста по ID
+      operationId: updatePostById
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/blog/BlogPostModel.yaml
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      description: Обновление поста
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/blog/BlogPostModel.yaml
+        description: ''
+      tags:
+        - Блог
+  /blog/posts:
+    get:
+      summary: Получение списка постов
+      tags:
+        - Блог
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/blog/BlogListPostsResponse.yaml
+      operationId: getPosts
+      description: Получить все доступные записи из блога
+      security: []
 components:
   schemas: {}
   securitySchemes:
     jwt:
       type: http
       scheme: bearer
+  parameters:
+    IDModel:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: ID сущности
+tags:
+  - name: Блог
+  - name: Проекты
 security:
   - jwt: []
-tags:
-  - name: Проекты

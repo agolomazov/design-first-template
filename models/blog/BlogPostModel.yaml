@@ -1,0 +1,20 @@
+title: BlogPostModel
+type: object
+description: Модель поста в блоге
+properties:
+  id:
+    $ref: ../common/CommonId.yaml
+  title:
+    type: string
+    description: Название поста
+  description:
+    type: string
+    description: Описание
+  fullText:
+    type: string
+  image:
+    $ref: ../common/Image.yaml
+required:
+  - id
+  - title
+  - fullText

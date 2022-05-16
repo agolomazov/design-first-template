@@ -1,0 +1,12 @@
+title: BlogListPostsResponse
+type: object
+description: Модель возвращает список постов по запросу
+properties:
+  pagination:
+    $ref: ../common/Pagination.yaml
+  data:
+    type: array
+    items:
+      $ref: ./BlogPostModel.yaml
+required:
+  - pagination
